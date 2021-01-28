@@ -1,0 +1,1 @@
+This folder contains the unity project files for the game created at the global gamejam
