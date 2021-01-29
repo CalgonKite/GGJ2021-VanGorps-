@@ -28,15 +28,9 @@ public class playerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Move();
-        scalarMove();
-    }
-
-    private void Update()
-    {
 
         /// jumping ///
-        /*if (isground == true && Input.GetAxis.name("Jump"))
+        /*if (isground == true && Input.GetKeyDown(KeyCode.Space))
         {
             Vector2 jumpvel = new Vector2(0, scalar_jump);
             rigidbody2D.AddForce(jumpvel);
@@ -45,6 +39,14 @@ public class playerMove : MonoBehaviour
         {
 
         }*/
+
+        //Move();
+        scalarMove();
+    }
+
+    private void Update()
+    {
+
     }
 
     public void Move()
@@ -70,16 +72,15 @@ public class playerMove : MonoBehaviour
         //Vector2 moving = new Vector2(movehoriz, 0);
         //rigidbody2D.AddForce(movement_scalar * moving);
 
-        /// jumping ///
-        /*if (isground == true && Input.GetButtonDown("Jump"))
+        if (isground == true && Input.GetKey(KeyCode.Space))
         {
             Vector2 jumpvel = new Vector2(0, scalar_jump);
-            rigidbody2D.AddForce(jumpvel);
+            rigidbody2D.AddForce(jumpvel * 1.5f);
         }
         else
         {
 
-        }*/
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
