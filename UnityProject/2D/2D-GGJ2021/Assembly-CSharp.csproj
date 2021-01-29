@@ -55,8 +55,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\placeholderAI.cs" />
     <Compile Include="Assets\Scripts\Movement\MovementPlaceholder.cs" />
-    <Compile Include="Assets\Scripts\Other\OtherPalceholders.cs" />
     <Compile Include="Assets\Scripts\Movement\playerMove.cs" />
+    <Compile Include="Assets\Scripts\Other\OtherPalceholders.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
