@@ -632,8 +632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  movement_scalar: 15
-  max_speed: 70
+  movement_scalar: 20.5
+  max_speed: 55
   scalar_jump: 500
   isground: 1
 --- !u!50 &1186693195
