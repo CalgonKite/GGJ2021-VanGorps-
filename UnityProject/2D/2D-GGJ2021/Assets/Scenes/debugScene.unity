@@ -632,13 +632,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  movement_scalar: 35
-  max_speed: 55
-  scalar_jump: 24
+  movement_scalar: 32
+  max_speed: 60
+  scalar_jump: 35
   jump_counter: 0
-  jump_time: 0.05
+  jump_time: 0.01
   isground: 0
   isjump: 0
+  ismoving: 0
+  friction: {fileID: 6200000, guid: bd7d45bf8a1301749a6d58a391404bc2, type: 2}
 --- !u!50 &1186693195
 Rigidbody2D:
   serializedVersion: 4

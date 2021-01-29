@@ -1,0 +1,2 @@
+C:\Users\44796\Documents\GitHub\GGJ2021-VanGorps-\UnityProject\2D\2D-GGJ2021\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\44796\Documents\GitHub\GGJ2021-VanGorps-\UnityProject\2D\2D-GGJ2021\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

@@ -15,6 +15,8 @@ public class player : MonoBehaviour
     [Header("Components")]
     public bool isground;
     public bool isjump;
+    public bool ismoving;
+    public PhysicsMaterial2D friction;
     private Rigidbody2D rigidbody2D;
     /// <summary>
     /// mechanics for movement
@@ -34,7 +36,7 @@ public class player : MonoBehaviour
         /// Jump gravity ///
         if (isground == false)
         {
-            rigidbody2D.gravityScale += 0.045f;
+            rigidbody2D.gravityScale += 0.04f;
         }
         else
         {
@@ -76,20 +78,27 @@ public class player : MonoBehaviour
         /// movement code ///
         float movehoriz = Input.GetAxis("Horizontal");
         //ADD A GROUNDED BOOL
+        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
+        {
+            ismoving = true;
+        }
+        else
+        {
+            ismoving = false;
+        }
+
         if (rigidbody2D.velocity.magnitude < max_speed)
         {
-            Vector2 moving = new Vector2(movehoriz, 0);
-            rigidbody2D.AddForce(movement_scalar * moving);
-            /*
+            Vector2 moving = new Vector2(movehoriz, 0).normalized;
             if (isground == true) // IF the player is on the ground, move as normal //
             {
                 rigidbody2D.AddForce(movement_scalar * moving);
             }
             else // IF the player is mid-jump, the amount of movement is divided by 3 //
             {
-                rigidbody2D.AddForce(movement_scalar * moving / 3);
+                rigidbody2D.AddForce(movement_scalar * moving / 1.5f);
                 Debug.Log("Moving whilst jumping");
-            }*/
+            }
         }
         //Vector2 moving = new Vector2(movehoriz, 0);
         //rigidbody2D.AddForce(movement_scalar * moving);
@@ -108,15 +117,19 @@ public class player : MonoBehaviour
         {
             isjump = true;
             jump_counter = jump_time;
-            Vector2 jumpvel = new Vector2(0, scalar_jump);
-            rigidbody2D.AddForce(jumpvel * 1.5f);
+            //Vector2 jumpvel = new Vector2(0, scalar_jump);
+            Vector2 jumpvel = Vector2.up.normalized;
+            //rigidbody2D.AddForce(jumpvel * 1.5f);
+            rigidbody2D.AddForce(jumpvel * scalar_jump);
         }
         if (Input.GetKey(KeyCode.Space) && isjump == true)
         {
             if (jump_counter > 0)
             {
-                Vector2 jumpvel = new Vector2(0, scalar_jump);
-                rigidbody2D.AddForce(jumpvel * 1.5f);
+                Vector2 jumpvel = Vector2.up.normalized;
+                rigidbody2D.AddForce(jumpvel * scalar_jump);
+                //Vector2 jumpvel = new Vector2(0, scalar_jump);
+                //rigidbody2D.AddForce(jumpvel * 1.5f);
             }
             else
             {
@@ -127,6 +140,24 @@ public class player : MonoBehaviour
         {
             isjump = false;
         }
+
+        if (rigidbody2D.velocity.magnitude > 1 && isground == true)
+        {
+            if(ismoving == false)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    friction.friction += 100;
+                    Debug.Log(rigidbody2D.velocity.magnitude);
+                }
+                resetFriction();
+            }
+        }
+    }
+
+    public void resetFriction()
+    {
+        friction.friction = 8;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -134,6 +165,7 @@ public class player : MonoBehaviour
         if (collision.gameObject.tag == "Floor")
         {
             isground = true;
+            isjump = false;
             Debug.Log("touching ground");
         }
     }
