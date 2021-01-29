@@ -79,6 +79,8 @@ public class playerMove : MonoBehaviour
         if (rigidbody2D.velocity.magnitude < max_speed)
         {
             Vector2 moving = new Vector2(movehoriz, 0);
+            rigidbody2D.AddForce(movement_scalar * moving);
+            /*
             if (isground == true) // IF the player is on the ground, move as normal //
             {
                 rigidbody2D.AddForce(movement_scalar * moving);
@@ -87,7 +89,7 @@ public class playerMove : MonoBehaviour
             {
                 rigidbody2D.AddForce(movement_scalar * moving / 3);
                 Debug.Log("Moving whilst jumping");
-            }
+            }*/
         }
         //Vector2 moving = new Vector2(movehoriz, 0);
         //rigidbody2D.AddForce(movement_scalar * moving);

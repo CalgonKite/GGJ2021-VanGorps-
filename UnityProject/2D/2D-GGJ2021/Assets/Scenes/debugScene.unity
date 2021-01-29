@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  movement_scalar: 20.5
+  movement_scalar: 22
   max_speed: 55
   scalar_jump: 27
   jump_counter: 0
