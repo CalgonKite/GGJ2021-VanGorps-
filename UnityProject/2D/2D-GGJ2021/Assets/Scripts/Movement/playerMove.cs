@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class playerMove : MonoBehaviour
 {
-    //simple
+    [Header("Simple")]
     public float speed;
-    //scalar
+    [Header("Scalar")]
     public float movement_scalar;
     public float max_speed;
     public float scalar_jump;
-    //components
-    private Rigidbody2D rigidbody2D;
+    public float jump_counter;
+    public float jump_time;
+    [Header("Components")]
     public bool isground;
+    public bool isjump;
+    private Rigidbody2D rigidbody2D;
     /// <summary>
     /// mechanics for movement
     /// Jump
@@ -28,6 +31,15 @@ public class playerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /// Jump gravity ///
+        if(isground == false)
+        {
+            rigidbody2D.gravityScale += 0.045f;
+        }
+        else
+        {
+            rigidbody2D.gravityScale = 1;
+        }
 
         /// jumping ///
         /*if (isground == true && Input.GetKeyDown(KeyCode.Space))
@@ -67,12 +79,20 @@ public class playerMove : MonoBehaviour
         if (rigidbody2D.velocity.magnitude < max_speed)
         {
             Vector2 moving = new Vector2(movehoriz, 0);
-            rigidbody2D.AddForce(movement_scalar * moving);
+            if (isground == true) // IF the player is on the ground, move as normal //
+            {
+                rigidbody2D.AddForce(movement_scalar * moving);
+            }
+            else // IF the player is mid-jump, the amount of movement is divided by 3 //
+            {
+                rigidbody2D.AddForce(movement_scalar * moving / 3);
+                Debug.Log("Moving whilst jumping");
+            }
         }
         //Vector2 moving = new Vector2(movehoriz, 0);
         //rigidbody2D.AddForce(movement_scalar * moving);
 
-        if (isground == true && Input.GetKey(KeyCode.Space))
+        /*if (isground == true && Input.GetKey(KeyCode.Space))
         {
             Vector2 jumpvel = new Vector2(0, scalar_jump);
             rigidbody2D.AddForce(jumpvel * 1.5f);
@@ -80,6 +100,30 @@ public class playerMove : MonoBehaviour
         else
         {
 
+        }*/
+
+        if (isground == true && Input.GetKey(KeyCode.Space))
+        {
+            isjump = true;
+            jump_counter = jump_time;
+            Vector2 jumpvel = new Vector2(0, scalar_jump);
+            rigidbody2D.AddForce(jumpvel * 1.5f);
+        }
+        if(Input.GetKey(KeyCode.Space) && isjump == true)
+        {
+            if (jump_counter > 0)
+            {
+                Vector2 jumpvel = new Vector2(0, scalar_jump);
+                rigidbody2D.AddForce(jumpvel * 1.5f);
+            }
+            else
+            {
+                isjump = false;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isjump = false;
         }
     }
 

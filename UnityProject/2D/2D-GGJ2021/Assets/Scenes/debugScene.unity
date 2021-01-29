@@ -634,8 +634,11 @@ MonoBehaviour:
   speed: 15
   movement_scalar: 20.5
   max_speed: 55
-  scalar_jump: 500
+  scalar_jump: 27
+  jump_counter: 0
+  jump_time: 0.2
   isground: 1
+  isjump: 0
 --- !u!50 &1186693195
 Rigidbody2D:
   serializedVersion: 4
