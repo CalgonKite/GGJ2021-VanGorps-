@@ -544,9 +544,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1186693193}
   - component: {fileID: 1186693192}
-  - component: {fileID: 1186693194}
   - component: {fileID: 1186693195}
   - component: {fileID: 1186693196}
+  - component: {fileID: 1186693194}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186693191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9518db32f2633469c51dcd2cf771a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 405a746ae35259848b2805cbb4be3761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
@@ -636,8 +636,8 @@ MonoBehaviour:
   max_speed: 55
   scalar_jump: 27
   jump_counter: 0
-  jump_time: 0.2
-  isground: 1
+  jump_time: 0.05
+  isground: 0
   isjump: 0
 --- !u!50 &1186693195
 Rigidbody2D:
