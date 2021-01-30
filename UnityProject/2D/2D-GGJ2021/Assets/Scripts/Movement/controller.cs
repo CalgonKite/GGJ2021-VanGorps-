@@ -14,6 +14,8 @@ public class controller : MonoBehaviour
     bool isgrounded;
     bool dashed = false;
 
+    public bool walljump = false;
+
     [Header("Physics")]
     private Rigidbody2D rgbd2D;
 
@@ -60,7 +62,7 @@ public class controller : MonoBehaviour
         move(horizMove); /// Calls the move function, passing through the Horizontal input value ///
 
         /// Jump gravity ///
-        if (isgrounded == false) /// Whilst mid-air ///
+        if (isgrounded == false && walljump == false) /// Whilst mid-air ///
         {
             rgbd2D.gravityScale += 0.0275f; /// Add gravityscale ///
         }
@@ -88,7 +90,7 @@ public class controller : MonoBehaviour
         }
 
         /// Jump controls ///
-        if (isgrounded == true && Input.GetKey(KeyCode.Space)) /// IF the player is grounded & the Space key is presssed ///
+        if (isgrounded == true || walljump == true && Input.GetKey(KeyCode.Space)) /// IF the player is grounded & the Space key is presssed ///
         {
             isjump = true; /// Flag bool to state player is jumping ///
             jump_counter = jump_time; /// Increment counter whilst mid-air ///
@@ -105,6 +107,7 @@ public class controller : MonoBehaviour
             else /// IF the player is grounded ///
             {
                 isjump = false; /// Flag jump as over ///
+                walljump = false;
             }
         }
         if (Input.GetKeyUp(KeyCode.Space)) /// IF the space button is released ///
@@ -142,7 +145,16 @@ public class controller : MonoBehaviour
             isgrounded = true; /// Flags bool that states the player has touched the ground ///
             isjump = false; /// Flags bool that states the player isn't mid-air ///
             dashed = false;
+            walljump = false;
             Debug.Log("touching ground");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Jumpable")
+        {
+            walljump = true;
         }
     }
 

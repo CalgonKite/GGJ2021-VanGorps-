@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 152228986}
   m_Layer: 0
   m_Name: walljumpTrigger
-  m_TagString: Wall
+  m_TagString: Jumpable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1037,6 +1037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Ui: {fileID: 934443949}
+  walljump: 0
   runspeed: 0.75
   scalar_jump: 30
   jump_counter: 0
