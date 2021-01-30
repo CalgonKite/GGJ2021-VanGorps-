@@ -32,9 +32,13 @@ public class controller : MonoBehaviour
     private float wallJumpCounter;
     private float wallJumpForce = 8f;
 
+    [Header("animation variables")]
+    private bool isdashing;
+
     private void Start()
     {
-        rgbd2D = GetComponent<Rigidbody2D>(); /// Assigns 2d rigidbody ///     
+        rgbd2D = GetComponent<Rigidbody2D>(); /// Assigns 2d rigidbody ///   
+        isdashing = false;
     }
 
     private void Update()
@@ -85,17 +89,19 @@ public class controller : MonoBehaviour
                     isJumping = false; /// IF the player isn't jumping ///
                     rgbd2D.gravityScale = 0; /// Set rigidbody gravity to 0 ///
                     hasDashed = true; /// Set as has dashed ///
+                    isdashing = true;
                     for (int i = 0; i < 30; i++)
                     {
                         Vector3 dashVelocity = new Vector2(hmove * 60f, 0); /// Move the character by finding the target velocity ///
                         rgbd2D.velocity = Vector3.SmoothDamp(rgbd2D.velocity, dashVelocity, ref Velocity, Smoothing); /// And then smoothing it out and applying it to the character ///
                     }
+                    StartCoroutine(eoDashing());
                 }
             }
             /// END of DASH Controls///
 
             /// Jump controls ///
-            if (Input.GetKey(KeyCode.Space) && isGrounded && !isGrabbing)
+            if (Input.GetKey(KeyCode.W) && isGrounded && !isGrabbing)
             {
                 //rgbd2D.velocity = new Vector2(rgbd2D.velocity.x, scalarJump);
                 //isJumping = true;
@@ -105,7 +111,7 @@ public class controller : MonoBehaviour
                 Vector2 jumpvel = Vector2.up.normalized; /// Normalise upward movement ///
                 rgbd2D.AddForce(jumpvel * scalarJump); /// Add force in upwards direction ///
             }
-            if (Input.GetKey(KeyCode.Space) && isJumping == true && !isGrabbing) /// Whilst mid-air & the jump button is continuely pressed ///
+            if (Input.GetKey(KeyCode.W) && isJumping == true && !isGrabbing) /// Whilst mid-air & the jump button is continuely pressed ///
             {
                 if (jumpCounter > 0) /// IF the counter is higher that null ///
                 {
@@ -145,7 +151,7 @@ public class controller : MonoBehaviour
             {
                 rgbd2D.gravityScale = 0; /// Set rigidbody gravity to 0 ///
                 rgbd2D.velocity = Vector2.zero; /// Remove all its velocity ///
-                if (Input.GetKeyDown(KeyCode.Space)) /// IF the spacebar is pressed ///
+                if (Input.GetKey(KeyCode.Q)) /// IF the spacebar is pressed ///
                 {
                     wallJumpCounter = wallJumpTime; /// Assign the walljumpcounter to be equal to the maxtime ///
 
@@ -176,6 +182,7 @@ public class controller : MonoBehaviour
             isJumping = false; /// Flags bool that states the player isn't mid-air ///
             hasDashed = false;
             canGrab = false;
+            isGrabbing = false;
             //Debug.Log("touching ground");
         }
     }
@@ -187,6 +194,12 @@ public class controller : MonoBehaviour
             isGrounded = false; /// Flags bool that states the player is no longer grounded ///
             //Debug.Log("Left ground");
         }
+    }
+
+    IEnumerator eoDashing() 
+    {
+        yield return new WaitForSeconds(0.38f);
+        isdashing = false;
     }
 }
 
