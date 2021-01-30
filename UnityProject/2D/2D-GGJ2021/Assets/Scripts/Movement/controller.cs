@@ -10,9 +10,9 @@ public class controller : MonoBehaviour
     public HP Ui;
 
     [Header("Booleans")]
-    bool isjump = false; 
-    bool isgrounded;
-    bool dashed = false;
+    public bool isjump = false; 
+    public bool isgrounded;
+    public bool dashed = false;
 
     public bool walljump = false;
 
@@ -62,9 +62,10 @@ public class controller : MonoBehaviour
         move(horizMove); /// Calls the move function, passing through the Horizontal input value ///
 
         /// Jump gravity ///
-        if (isgrounded == false && walljump == false) /// Whilst mid-air ///
+        if (isgrounded == false) /// Whilst mid-air ///
         {
             rgbd2D.gravityScale += 0.0275f; /// Add gravityscale ///
+            //jump_counter -= 0.005f;
         }
         else /// Once grounded ///
         {
@@ -90,7 +91,7 @@ public class controller : MonoBehaviour
         }
 
         /// Jump controls ///
-        if (isgrounded == true || walljump == true && Input.GetKey(KeyCode.Space)) /// IF the player is grounded & the Space key is presssed ///
+        if (isgrounded == true && Input.GetKey(KeyCode.Space)) /// IF the player is grounded & the Space key is presssed ///
         {
             isjump = true; /// Flag bool to state player is jumping ///
             jump_counter = jump_time; /// Increment counter whilst mid-air ///
@@ -113,6 +114,14 @@ public class controller : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space)) /// IF the space button is released ///
         {
             isjump = false; /// Flag jump as over ///
+        }
+        if (walljump == true && Input.GetKeyDown(KeyCode.Q))//walljump code
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                Vector3 dashVelocity = new Vector2(hmove * 60f, i); /// Move the character by finding the target velocity ///
+                rgbd2D.velocity = Vector3.SmoothDamp(rgbd2D.velocity, dashVelocity, ref Velocity, Smoothing); /// And then smoothing it out and applying it to the character ///
+            }
         }
         /// END of Jump controls ///
         /// DASH Controls ///
@@ -145,7 +154,6 @@ public class controller : MonoBehaviour
             isgrounded = true; /// Flags bool that states the player has touched the ground ///
             isjump = false; /// Flags bool that states the player isn't mid-air ///
             dashed = false;
-            walljump = false;
             Debug.Log("touching ground");
         }
     }
@@ -155,7 +163,13 @@ public class controller : MonoBehaviour
         if(other.gameObject.tag == "Jumpable")
         {
             walljump = true;
+            isjump = false;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Jumpable") { walljump = false; }
     }
 
     private void OnCollisionExit2D(Collision2D collision) /// When the player leaves the ground ///
