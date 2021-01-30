@@ -5,7 +5,7 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     [Header("Simple")]
-    public float speed;
+    //public float speed;
     [Header("Scalar")]
     public float movement_scalar;
     public float max_speed;
@@ -18,6 +18,9 @@ public class player : MonoBehaviour
     public bool ismoving;
     public PhysicsMaterial2D friction;
     private Rigidbody2D rigidbody2D;
+    private Vector3 Velocity = Vector3.zero;
+    private float Smoothing = 0.05f;
+
     /// <summary>
     /// mechanics for movement
     /// Jump
@@ -63,14 +66,14 @@ public class player : MonoBehaviour
 
     }
 
-    public void Move()
+    /*public void Move()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 moving = new Vector2(moveHorizontal, moveVertical);
         rigidbody2D.AddForce(moving * speed);
-    }
+    }*/
 
     //handles inputs for movement
     public void scalarMove()
@@ -100,26 +103,12 @@ public class player : MonoBehaviour
                 Debug.Log("Moving whilst jumping");
             }
         }
-        //Vector2 moving = new Vector2(movehoriz, 0);
-        //rigidbody2D.AddForce(movement_scalar * moving);
-
-        /*if (isground == true && Input.GetKey(KeyCode.Space))
-        {
-            Vector2 jumpvel = new Vector2(0, scalar_jump);
-            rigidbody2D.AddForce(jumpvel * 1.5f);
-        }
-        else
-        {
-
-        }*/
 
         if (isground == true && Input.GetKey(KeyCode.Space))
         {
             isjump = true;
             jump_counter = jump_time;
-            //Vector2 jumpvel = new Vector2(0, scalar_jump);
             Vector2 jumpvel = Vector2.up.normalized;
-            //rigidbody2D.AddForce(jumpvel * 1.5f);
             rigidbody2D.AddForce(jumpvel * scalar_jump);
         }
         if (Input.GetKey(KeyCode.Space) && isjump == true)
@@ -128,8 +117,6 @@ public class player : MonoBehaviour
             {
                 Vector2 jumpvel = Vector2.up.normalized;
                 rigidbody2D.AddForce(jumpvel * scalar_jump);
-                //Vector2 jumpvel = new Vector2(0, scalar_jump);
-                //rigidbody2D.AddForce(jumpvel * 1.5f);
             }
             else
             {
@@ -147,7 +134,7 @@ public class player : MonoBehaviour
             {
                 for(int i = 0; i < 3; i++)
                 {
-                    friction.friction += 100;
+                    friction.friction += 1000f;
                     Debug.Log(rigidbody2D.velocity.magnitude);
                 }
                 resetFriction();
@@ -157,7 +144,7 @@ public class player : MonoBehaviour
 
     public void resetFriction()
     {
-        friction.friction = 8;
+        friction.friction = 0.5f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
