@@ -12,6 +12,7 @@ public class controller : MonoBehaviour
     [Header("Booleans")]
     bool isjump = false; 
     bool isgrounded;
+    bool dashed = false;
 
     [Header("Physics")]
     private Rigidbody2D rgbd2D;
@@ -28,7 +29,7 @@ public class controller : MonoBehaviour
     private void Start()
     {
         rgbd2D = GetComponent<Rigidbody2D>(); /// Assigns 2d rigidbody ///     
-        changeHP(1); /// Test remove health ///
+        //changeHP(1); /// Test remove health ///
     }
 
     private void Update()
@@ -36,6 +37,10 @@ public class controller : MonoBehaviour
         horizMove = Input.GetAxisRaw("Horizontal") * runspeed; /// Read input values ///
     }
 
+    /// <summary>
+    /// HEALTH FUNCTION
+    /// </summary>
+    /// <param name="damage"></param>
     public void changeHP(int damage) /// Damage function, passed damage amount ///
     {
         if (Health - damage == 0) /// IF the current health - the damage is equal to 0 ///
@@ -65,6 +70,10 @@ public class controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// FUNCTION USED TO HANDLE MOVEMENT
+    /// </summary>
+    /// <param name="hmove"></param>
     public void move(float hmove) /// Movement script, uses horizMove to determine speed ///
     {
         if (isgrounded == true) /// IF the player is grounded ///
@@ -103,6 +112,26 @@ public class controller : MonoBehaviour
             isjump = false; /// Flag jump as over ///
         }
         /// END of Jump controls ///
+        /// DASH Controls ///
+        if (isgrounded == false && Input.GetKey(KeyCode.E)) 
+        {
+            if (dashed == false)
+            {
+                isjump = false;
+                rgbd2D.gravityScale = 0;
+                dashed = true;
+                for (int i = 0; i < 30; i++) 
+                {
+                    Vector3 dashVelocity = new Vector2(hmove * 60f, 0); /// Move the character by finding the target velocity ///
+                    rgbd2D.velocity = Vector3.SmoothDamp(rgbd2D.velocity, dashVelocity, ref Velocity, Smoothing); /// And then smoothing it out and applying it to the character ///
+                }
+            }
+            /*else 
+            {
+                dashed = false;
+            }*/
+        }
+        /// END of DASH Controls///
     }
 
     /// Collision functions, used to determine whether the player is on the ground ///
@@ -112,6 +141,7 @@ public class controller : MonoBehaviour
         {
             isgrounded = true; /// Flags bool that states the player has touched the ground ///
             isjump = false; /// Flags bool that states the player isn't mid-air ///
+            dashed = false;
             Debug.Log("touching ground");
         }
     }
