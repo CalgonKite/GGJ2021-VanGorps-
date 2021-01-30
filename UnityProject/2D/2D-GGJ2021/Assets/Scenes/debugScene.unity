@@ -1100,6 +1100,7 @@ GameObject:
   - component: {fileID: 1186693195}
   - component: {fileID: 1186693196}
   - component: {fileID: 1186693197}
+  - component: {fileID: 1186693198}
   - component: {fileID: 1186693194}
   m_Layer: 3
   m_Name: Player
@@ -1254,8 +1255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9bfea2f6b11f446a7af10ba9a8e9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Ui: {fileID: 934443949}
   isJumping: 0
   isGrounded: 0
   hasDashed: 0
@@ -1270,6 +1269,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   wallJumpTime: 0.2
+--- !u!114 &1186693198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186693191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f013c76aab6ea0e4dab89eddd9e290c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 3
+  Ui: {fileID: 934443949}
 --- !u!1 &1192017603
 GameObject:
   m_ObjectHideFlags: 0

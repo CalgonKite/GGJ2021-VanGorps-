@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Floor
   - Wall
-  - Jumpable
+  - Fragment
   layers:
   - Default
   - TransparentFX

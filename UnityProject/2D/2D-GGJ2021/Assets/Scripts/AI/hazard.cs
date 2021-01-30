@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class hazard : MonoBehaviour
 {
-    controller pStats; /// Ease of access for script ///
+    PlayerProfile pStats; /// Ease of access for script ///
 
     private void Start()
     {
-        pStats = GameObject.FindWithTag("Player").GetComponent<controller>(); /// Find script via tags and assign it ///
+        pStats = GameObject.FindWithTag("Player").GetComponent<PlayerProfile>(); /// Find script via tags and assign it ///
     }
 
     private void OnCollisionEnter(Collision collision) /// Collision detection ///

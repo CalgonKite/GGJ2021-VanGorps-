@@ -1,14 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class controller : MonoBehaviour
 {
-    [Header("Vitals")]
-    public int Health= 3;
-    public HP Ui;
-
     [Header("Booleans")]
     public bool isJumping = false; 
     public bool isGrounded;
@@ -40,30 +35,11 @@ public class controller : MonoBehaviour
     private void Start()
     {
         rgbd2D = GetComponent<Rigidbody2D>(); /// Assigns 2d rigidbody ///     
-        //changeHP(1); /// Test remove health ///
     }
 
     private void Update()
     {
         horizMove = Input.GetAxisRaw("Horizontal") * runSpeed; /// Read input values ///
-    }
-
-    /// <summary>
-    /// HEALTH FUNCTION
-    /// </summary>
-    /// <param name="damage"></param>
-    public void changeHP(int damage) /// Damage function, passed damage amount ///
-    {
-        if (Health - damage == 0) /// IF the current health - the damage is equal to 0 ///
-        {
-            Debug.Log("Game Over");
-            Ui.changeDisplay(0); /// Change display to game over state ///
-        }
-        else /// Otherwise ///
-        {
-            Ui.changeDisplay(Health-damage); /// Apply the damage to the display ///
-            Health -= damage; /// Apply the damage ///
-        }
     }
 
     private void FixedUpdate()
