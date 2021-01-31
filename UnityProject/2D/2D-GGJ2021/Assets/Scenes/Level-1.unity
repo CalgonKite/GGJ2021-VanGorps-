@@ -19991,7 +19991,7 @@ GameObject:
   - component: {fileID: 777345103}
   - component: {fileID: 777345102}
   m_Layer: 0
-  m_Name: CamScreen1
+  m_Name: CamA
   m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

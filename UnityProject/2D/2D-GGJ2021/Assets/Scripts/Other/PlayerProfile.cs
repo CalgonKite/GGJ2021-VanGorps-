@@ -19,6 +19,13 @@ public class PlayerProfile : MonoBehaviour
 
     private void Awake()
     {
+        //screenMarkers = GameObject.FindGameObjectsWithTag("Marker"); /// Iterative through tag & add to array ///
+        //screenCameras = GameObject.FindGameObjectsWithTag("Camera");
+        //advanceScreen(0); /// Then set the current screen to 0 ///
+    }
+
+    private void Start()
+    {
         screenMarkers = GameObject.FindGameObjectsWithTag("Marker"); /// Iterative through tag & add to array ///
         screenCameras = GameObject.FindGameObjectsWithTag("Camera");
         advanceScreen(0); /// Then set the current screen to 0 ///
@@ -41,12 +48,22 @@ public class PlayerProfile : MonoBehaviour
 
     public void advanceScreen(int screenNum) /// Function to advance the screen and reassign the reset point ///
     {
+        screenCameras[screenNum].GetComponent<Camera>().enabled = false; //disable current screen
         currentScreen = screenNum; /// Change the array index to current screen ///
-        screenCameras[screenNum].SetActive(true);
+        //screenCameras[screenNum].SetActive(true);
+        screenCameras[screenNum].GetComponent<Camera>().enabled = true; //enable next camera component
         lastMarkerPos = screenMarkers[screenNum].transform.position; /// Assign vector through array index of reset point ///
 
 
         resetPlayer(); /// Reset player to new point ///
+    }
+
+    public void disableothercams(GameObject[] cameras) 
+    {
+        for (int i = 1; i<cameras.Length; i++) 
+        {
+            cameras[i].GetComponent<Camera>().enabled = false;
+        }
     }
 
     public void resetPlayer() /// Function to reset the player within the screen ///
