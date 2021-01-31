@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Greyboxtiles_10
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 2277380207793147032, guid: af047e0bbc7ccbf4b9470632a77ddb88, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.91351354, b: 0.84864867, a: 1}
   m_Transform:
     e00: 1
     e01: 0
