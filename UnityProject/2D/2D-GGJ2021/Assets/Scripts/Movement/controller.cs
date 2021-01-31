@@ -34,9 +34,16 @@ public class controller : MonoBehaviour
 
     [Header("animation variables")]
     private bool isdashing;
+    public bool JumpHeld;
+    public bool isKickJump;
+    Animator anim;
+    SpriteRenderer Sprite;
+    public GameObject GrabPoint;
 
     private void Start()
     {
+        Sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         rgbd2D = GetComponent<Rigidbody2D>(); /// Assigns 2d rigidbody ///   
         isdashing = false;
     }
@@ -74,6 +81,7 @@ public class controller : MonoBehaviour
             {
                 Vector3 targetVelocity = new Vector2(hmove * 10f, rgbd2D.velocity.y); /// Move the character by finding the target velocity ///
                 rgbd2D.velocity = Vector3.SmoothDamp(rgbd2D.velocity, targetVelocity, ref Velocity, Smoothing); /// And then smoothing it out and applying it to the character ///
+                anim.SetFloat("Speed", Mathf.Abs(hmove));
             }
             else /// Whilst in the air ///
             {
@@ -90,6 +98,7 @@ public class controller : MonoBehaviour
                     rgbd2D.gravityScale = 0; /// Set rigidbody gravity to 0 ///
                     hasDashed = true; /// Set as has dashed ///
                     isdashing = true;
+                    anim.SetBool("isDashing", isdashing);
                     for (int i = 0; i < 30; i++)
                     {
                         Vector3 dashVelocity = new Vector2(hmove * 60f, 0); /// Move the character by finding the target velocity ///
@@ -107,6 +116,10 @@ public class controller : MonoBehaviour
                 //isJumping = true;
 
                 isJumping = true; /// Flag bool to state player is jumping ///
+                anim.SetBool("isJumping", isJumping);
+                anim.SetBool("isGrounded", false);
+                JumpHeld = true;
+                anim.SetBool("JumpHeld", JumpHeld);
                 jumpCounter = jumpTime; /// Increment counter whilst mid-air ///
                 Vector2 jumpvel = Vector2.up.normalized; /// Normalise upward movement ///
                 rgbd2D.AddForce(jumpvel * scalarJump); /// Add force in upwards direction ///
@@ -117,12 +130,18 @@ public class controller : MonoBehaviour
                 {
                     Vector2 jumpvel = Vector2.up.normalized; /// Normalise upward movement ///
                     rgbd2D.AddForce(jumpvel * scalarJump); /// Add additional force in upwards direction ///
+
                 }
                 else /// IF the player is grounded ///
                 {
                     isJumping = false; /// Flag jump as over ///
                 }
                 jumpCounter -= 0.0025f;
+            }
+            else
+            {
+                JumpHeld = false;
+                anim.SetBool("JumpHeld", JumpHeld);
             }
 
             /// IF statement to determine directional facing ///
@@ -144,6 +163,8 @@ public class controller : MonoBehaviour
                 if ((transform.localScale.x == 1f && Input.GetAxisRaw("Horizontal") > 0) || (transform.localScale.x == -1f && Input.GetAxisRaw("Horizontal") < 0)) /// Determene whether they're moving against the object, in either direction ///
                 {
                     isGrabbing = true; /// Set is-currently-grabbing bool to true ///
+                    anim.SetBool("isGrabbing", isGrabbing);
+                    Sprite.flipX = false;
                 }
             }
 
@@ -151,18 +172,28 @@ public class controller : MonoBehaviour
             {
                 rgbd2D.gravityScale = 0; /// Set rigidbody gravity to 0 ///
                 rgbd2D.velocity = Vector2.zero; /// Remove all its velocity ///
+
                 if (Input.GetKey(KeyCode.Q)) /// IF the spacebar is pressed ///
                 {
+                    isKickJump = true;
                     wallJumpCounter = wallJumpTime; /// Assign the walljumpcounter to be equal to the maxtime ///
-
                     rgbd2D.velocity = new Vector2(-Input.GetAxisRaw("Horizontal") * wallJumpSpeed, wallJumpForce); /// Applies velocity upwards and opposite direction ///
                     rgbd2D.gravityScale = gravityValue; /// Reset gravity to normal ///
                     isGrabbing = false; /// Flag grabbing as false ///
+                    anim.SetBool("isGrabbing", isGrabbing);
+                    anim.SetBool("isKickJump", isKickJump);
+                }
+                else
+                {
+                    Sprite.flipX = true;
+                    isKickJump = false;
+                    anim.SetBool("isKickJump", isKickJump);
                 }
             }
             else /// IF the play isn't grabbing a wall ///
             {
                 rgbd2D.gravityScale = gravityValue; /// Flag grabbing as false /// 
+
             }
         }
         else
@@ -183,6 +214,10 @@ public class controller : MonoBehaviour
             hasDashed = false;
             canGrab = false;
             isGrabbing = false;
+            anim.SetBool("isGrounded", isGrounded);
+            anim.SetBool("isJumping", isJumping);
+            anim.SetBool("isGrabbing", isGrabbing);
+            Sprite.flipX = false;
             //Debug.Log("touching ground");
         }
     }
@@ -208,6 +243,7 @@ public class controller : MonoBehaviour
     {
         yield return new WaitForSeconds(0.38f);
         isdashing = false;
+        anim.SetBool("isDashing", isdashing);
     }
 }
 
