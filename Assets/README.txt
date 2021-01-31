@@ -1,1 +1,0 @@
-This folder contains the assets for the game created at the global gamejam

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerProfile : MonoBehaviour
 {
@@ -44,6 +45,12 @@ public class PlayerProfile : MonoBehaviour
             screenCameras[currentScreen].SetActive(false);
             advanceScreen(currentScreen += 1); /// Pass through current screen int + 1 ///   
         }
+
+        if (collision.tag == "LevelEnd") 
+        {
+            //start coroutine
+            StartCoroutine(nextLevel());
+        }
     }
 
     public void advanceScreen(int screenNum) /// Function to advance the screen and reassign the reset point ///
@@ -69,5 +76,13 @@ public class PlayerProfile : MonoBehaviour
     public void resetPlayer() /// Function to reset the player within the screen ///
     {
         transform.position = lastMarkerPos; /// Set the players location to the rest point ///
+    }
+
+    IEnumerator nextLevel() 
+    {
+        yield return null;
+        var currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadSceneAsync(currentScene + 1);
     }
 }

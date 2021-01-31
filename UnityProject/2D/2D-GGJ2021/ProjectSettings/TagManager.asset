@@ -10,6 +10,7 @@ TagManager:
   - Marker
   - ScreenEnd
   - Camera
+  - LevelEnd
   layers:
   - Default
   - TransparentFX
