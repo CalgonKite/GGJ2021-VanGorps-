@@ -1,7 +1,55 @@
 fileFormatVersion: 2
 guid: 8b0c910cb9d539c49a6d603921aca9d0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7228754126225484236
+    second: RaiateaSprites_Idle
+  - first:
+      213: -6698019166148474837
+    second: RaiateaSprites_Walking01
+  - first:
+      213: -7375761506895690027
+    second: RaiateaSprites_Walking02
+  - first:
+      213: 652411118366222222
+    second: RaiateaSprites_Walking03
+  - first:
+      213: 1143058420278203637
+    second: RaiateaSprites_Walking04
+  - first:
+      213: 8159227995551354057
+    second: RaiateaSprites_Walking05
+  - first:
+      213: -6650591832219137585
+    second: RaiateaSprites_Walking06
+  - first:
+      213: 7521699505268649963
+    second: RaiateaSprites_Walking07
+  - first:
+      213: -985194871674240681
+    second: RaiateaSprites_Walking08
+  - first:
+      213: -2484731956559014767
+    second: RaiateaSprites_Walking09
+  - first:
+      213: 8671405802866980656
+    second: RaiateaSprites_Jumping
+  - first:
+      213: -4097426169566534893
+    second: RaiateaSprites_11
+  - first:
+      213: -9005784935236184625
+    second: RaiateaSprites_Falling
+  - first:
+      213: 7560275231262250860
+    second: RaiateaSprites_Dash01
+  - first:
+      213: -2448174549380532545
+    second: RaiateaSprites_Dashing
+  - first:
+      213: -2733445986654054280
+    second: RaiateaSprites_WallCling
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +89,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -65,7 +113,19 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -77,7 +137,343 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: RaiateaSprites_Idle
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 3223
+        width: 267
+        height: 759
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 436d0b9fb6e4eab90800000000000000
+      internalID: -7228754126225484236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking01
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 2416
+        width: 314
+        height: 744
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2846f65e0bdb03a0800000000000000
+      internalID: -6698019166148474837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking02
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 2422
+        width: 293
+        height: 745
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d68b79ecf704a990800000000000000
+      internalID: -7375761506895690027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking03
+      rect:
+        serializedVersion: 2
+        x: 1874
+        y: 2422
+        width: 267
+        height: 738
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e87ebbd9474dd0900800000000000000
+      internalID: 652411118366222222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking04
+      rect:
+        serializedVersion: 2
+        x: 2656
+        y: 2422
+        width: 279
+        height: 738
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4933ab395fcdf00800000000000000
+      internalID: 1143058420278203637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking05
+      rect:
+        serializedVersion: 2
+        x: 3421
+        y: 2422
+        width: 330
+        height: 731
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ccc24ce1a66b3170800000000000000
+      internalID: 8159227995551354057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking06
+      rect:
+        serializedVersion: 2
+        x: 4240
+        y: 2422
+        width: 299
+        height: 731
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9c67607f954b3a0800000000000000
+      internalID: -6650591832219137585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking07
+      rect:
+        serializedVersion: 2
+        x: 5066
+        y: 2429
+        width: 267
+        height: 731
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befe4ce29d1726860800000000000000
+      internalID: 7521699505268649963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking08
+      rect:
+        serializedVersion: 2
+        x: 5847
+        y: 2429
+        width: 281
+        height: 717
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7510257eb72e352f0800000000000000
+      internalID: -985194871674240681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Walking09
+      rect:
+        serializedVersion: 2
+        x: 6634
+        y: 2429
+        width: 298
+        height: 745
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1941d3f3375748dd0800000000000000
+      internalID: -2484731956559014767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Jumping
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1614
+        width: 344
+        height: 744
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037b52772a5075870800000000000000
+      internalID: 8671405802866980656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_11
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 1642
+        width: 443
+        height: 723
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 313e89d9b940327c0800000000000000
+      internalID: -4097426169566534893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Falling
+      rect:
+        serializedVersion: 2
+        x: 1733
+        y: 1632
+        width: 485
+        height: 739
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5deabe056050380800000000000000
+      internalID: -9005784935236184625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Dash01
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 860
+        width: 450
+        height: 689
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c67129b444e7be860800000000000000
+      internalID: 7560275231262250860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_Dashing
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 868
+        width: 632
+        height: 682
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb67504e736560ed0800000000000000
+      internalID: -2448174549380532545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaiateaSprites_WallCling
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 40
+        width: 422
+        height: 709
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87894c88b59d01ad0800000000000000
+      internalID: -2733445986654054280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
