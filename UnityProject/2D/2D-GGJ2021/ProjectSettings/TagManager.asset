@@ -7,6 +7,9 @@ TagManager:
   - Floor
   - Wall
   - Fragment
+  - Marker
+  - ScreenEnd
+  - Camera
   layers:
   - Default
   - TransparentFX

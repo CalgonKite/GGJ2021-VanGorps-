@@ -136,7 +136,7 @@ public class controller : MonoBehaviour
             }
 
             /// Wall jumping section ///
-            canGrab = Physics2D.OverlapCircle(wallGrab.position, 0.2f, isSurface); /// Bool to check if an object that can be walljumped is touching the player ///
+            canGrab = Physics2D.OverlapCircle(wallGrab.position, 0.25f, isSurface); /// Bool to check if an object that can be walljumped is touching the player ///
 
             isGrabbing = false; /// Set the is-currently-grabbing bool to false ///
             if (canGrab && !isGrounded) /// IF walljump object is touching the player and they aren't grounded ///
@@ -184,6 +184,14 @@ public class controller : MonoBehaviour
             canGrab = false;
             isGrabbing = false;
             //Debug.Log("touching ground");
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            isGrounded = true;
         }
     }
 
